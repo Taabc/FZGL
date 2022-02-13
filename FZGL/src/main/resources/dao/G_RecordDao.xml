@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "
+http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.G_RecordDao">
+
+    <!--    <resultMap id="BaseResultMap" type="pojo.Employee">-->
+    <!--        <id column="emp_id" property="empId"/>-->
+    <!--        <result column="emp_name" property="empName"/>-->
+    <!--        <result column="emp_gender" property="empGender"/>-->
+    <!--        <result column="emp_email" property="empEmail"/>-->
+    <!--        <result column="emp_phone" property="empPhone"/>-->
+    <!--        <result column="emp_birthday" property="empBirthday"/>-->
+    <!--        <result column="hire_date" property="hireDate"/>-->
+    <!--        <result column="create_time" property="createTime"/>-->
+    <!--        <result column="update_time" property="updateTime"/>-->
+    <!--    </resultMap>-->
+
+    <!-- List<Employee> findAll(); -->
+
+
+
+
+    <insert id="addRecord" parameterType="pojo.G_Record" useGeneratedKeys="true" keyProperty="flag">
+        INSERT INTO s_good_record
+        (`flag`,`uid`,`gid`,`time`,`num`)
+        VALUES
+        (#{flag}, #{uid}, #{gid}, #{time}, #{num})
+    </insert>
+
+    <select id="findAllRecord"   resultType="pojo.G_Record">
+        SELECT
+        *
+        FROM
+        s_good_record
+    </select>
+    <!--    &lt;!&ndash; 增删改操作是mybatis是没有resultType属性的，但是可以根据方法的返回值进行推断得到 &ndash;&gt;-->
+    <!--    <delete id="deleteById" parameterType="Integer">-->
+    <!--        DELETE FROM tb_employee WHERE emp_id = #{id}-->
+    <!--    </delete>-->
+</mapper>

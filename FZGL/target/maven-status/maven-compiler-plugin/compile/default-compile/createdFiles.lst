@@ -1,0 +1,17 @@
+pojo\G_Record.class
+service\impl\UserServiceImpl.class
+pojo\Goods.class
+service\impl\G_RecordServiceImpl.class
+dao\GoodsDao.class
+controller\UserController.class
+service\UserService.class
+dao\UserDao.class
+pojo\User.class
+interceptor\LoginInterceptor.class
+controller\UIViewController.class
+dao\G_RecordDao.class
+controller\GoodsController.class
+pojo\ResultMap.class
+service\GoodsService.class
+service\G_RecordService.class
+service\impl\GoodsServiceImpl.class

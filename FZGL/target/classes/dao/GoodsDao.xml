@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "
+http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.GoodsDao">
+
+        <resultMap id="BaseResultMap" type="pojo.Goods">
+            <id column="id" property="id"/>
+            <result column="name" property="name"/>
+            <result column="price" property="price"/>
+            <result column="repertory" property="repertory"/>
+            <result column="g_delete" property="g_delete"/>
+        </resultMap>
+
+    <!-- List<Employee> findAll(); -->
+
+
+    <select id="findAllGoods"   resultMap="BaseResultMap" >
+        SELECT
+        *
+        FROM
+        s_goods
+        WHERE  g_delete = 1
+    </select>
+    <select id="findGoodsNumById"   resultMap="BaseResultMap" parameterType="Integer">
+        SELECT
+        *
+        FROM
+        s_goods
+        WHERE  g_delete = 1  and id = #{id}
+    </select>
+    <insert id="addGoods" parameterType="pojo.Goods" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO s_goods
+        (`id`,`name`,`price`,`repertory`,`type`,`g_delete`)
+        VALUES
+        (#{id}, #{name}, #{price}, #{repertory},#{type}, 1)
+    </insert>
+
+    <update id="deleteGoods" parameterType="Integer">
+        UPDATE
+        s_goods
+        SET
+        g_delete = 0
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateGoods" parameterType="pojo.Goods">
+        UPDATE
+        s_goods
+        SET
+        id = #{id},
+        name = #{name},
+        price = #{price},
+        type = #{type}
+
+        WHERE id = #{id}
+    </update>
+    <!--    &lt;!&ndash; 增删改操作是mybatis是没有resultType属性的，但是可以根据方法的返回值进行推断得到 &ndash;&gt;-->
+    <!--    <delete id="deleteById" parameterType="Integer">-->
+    <!--        DELETE FROM tb_employee WHERE emp_id = #{id}-->
+    <!--    </delete>-->
+    <update id="updateRepertory" parameterType="Integer">
+        UPDATE
+        s_goods
+        SET
+        repertory = #{repertory}
+        WHERE id = #{id}
+    </update>
+</mapper>
